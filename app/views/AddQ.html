@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link href = "/css/addq.css" rel = "stylesheet" >
+    </head>
+    <body>
+        <div class="containermain">
+            <form action="/addquestion" method="POST">
+                    <div class="container">
+                            <div class="tb"><select name="quiz" id="quizname">
+                                    {% for i in quizes %}
+                                        <option value= "{{ i }}"> {{ i }}</option>
+                                    {% endfor %}
+                            </select></div>
+                        <div class="tb"><input type="text" name = "question" class="textbox" id = "qbox" placeholder="Question"></input></div>
+                        <div class="tb"><input type="text" name="op1" class="textbox" placeholder="Option1"></input></div>
+                        <div class="tb"><input type="text" name="op2" class="textbox" placeholder="Option2"></input></div>
+                        <div class="tb"><input type="text" name="op3" class="textbox" placeholder="Option3"></input></div>
+                        <div class="tb"><input type="text" name="op4" class="textbox" placeholder="Option4"></input></div>
+                        <div class="tb"><input type="text" name="answer" class="textbox"placeholder="Answer"></input></div>
+                        <button type="submit" class="submtbtn">Submit</button>
+                </div>
+            </form>
+    
+        </div>
+    
+        <div>  
+        </div>
+
+    </body>
+    {% if error == true %}
+    <script>
+        window.location.href = "/";
+    </script>
+{% endif %}
+    <script>
+    var array ="{{quizes}}";
+    </script>
+</html>

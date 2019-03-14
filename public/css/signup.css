@@ -1,0 +1,53 @@
+body
+{
+    background-image: url("bg.jpg");
+    background-size: cover;
+}
+.signuperror
+{
+    color : red;
+}
+.container
+{
+    width : 100%;
+    height : 100%;
+}
+.formcont
+{   width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.textbox
+{   margin : 0.5%;
+    width : 30%;
+    height: 5%;
+    border:solid;
+    border-color : #160272;
+    border-radius: 1vw;   
+    font-size: 1.1vw;
+}
+.subm
+{
+    width : 10%;
+    height : 5%;
+    color : white;
+    background-color:#160272;
+    border : solid;
+    border-color:  #160272;
+    border-radius : 1vw;
+    font-size: 1.2vw;
+}
+.subm:hover 
+{   background-color: white;
+    color : #160272;
+    cursor : pointer;
+}
+.title
+{
+    font-size : 4vw;
+    color: #160272;
+}

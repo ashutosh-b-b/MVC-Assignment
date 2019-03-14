@@ -1,0 +1,55 @@
+body{
+
+background-image: url("mainbg.jpg");
+background-size: cover;
+
+}
+.logout
+{
+    background-color: white;
+    color : #160272;
+    border-color: white;
+    border : solid 0.2vw;
+    border-radius: 1.5vw;
+}
+.container
+{   width :100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.title
+{
+    font-size: 6vw;
+    color : white;
+
+}
+.logsign
+{
+    display: flex;
+    flex-direction: row;
+
+}
+.linker
+{
+    margin-left: 7%;
+    font-size: 1.5vw;
+    color : white;
+}
+.linkk:visited
+{
+    color : white;
+    text-decoration: none;
+}
+.linkk:active
+{
+    color : white;
+    text-decoration: none;
+}
+.logout
+{
+    width: 10%;
+    height: 5%;
+}

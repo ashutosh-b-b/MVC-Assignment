@@ -1,0 +1,22 @@
+<html>
+<head>
+<link rel="stylesheet" href="/css/login.css">
+</head>
+    <body>
+        <div>{{title}}</div>
+        <div>{{error}}</div>
+        <div class="container">
+            <form action="/login" method="POST">
+               <div class="formcont">
+                <select name="role" id="select">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <input type="text" name="username" class="textbox" placeholder="username"></input>
+                <input type="password" name="password" class="textbox" placeholder="password"></input>
+                <button type="submit" class="subm">Login</button>
+            </div>  
+            </form>
+        </div>
+    </body>
+</html>

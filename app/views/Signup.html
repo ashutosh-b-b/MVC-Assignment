@@ -1,0 +1,26 @@
+<html>
+    <title>
+        {{title}}
+    </title>
+    <head>
+        <link rel="stylesheet" href="/css/signup.css">
+    </head>
+    <body>
+        
+        <div class="container">
+        
+        <form action="/signup" method="POST" class="form">
+        <div class="formcont">
+                <div class="signuperor">
+                        {% if signuperror == true %}
+                            <p class="signuperror">Username is already taken. Please try another username.</p>
+                        {% endif %}
+                </div>
+        <input type="text" name="username" placeholder="username" class="textbox" required></input>
+        <input type="password" name="password" placeholder="password" class="textbox" required></input>
+        <button type="submit" class="subm"> Signup!</button>
+        </div>
+    </form>
+         </div>
+    </body>
+</html>

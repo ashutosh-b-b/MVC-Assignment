@@ -1,0 +1,151 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/quizboard.css">
+</head>
+<body>
+    <div class="error"> {{error}} </div>
+    
+    <div id= "select_quiz">
+        <form action="/quizboard" method="POST">
+           <div class="container">
+                <select name="quizname" id="quizname">
+                {% for i in quizes %}
+                    <option value= "{{ i }}"> {{ i }}</option>
+                {% endfor %}
+                </select>
+                
+                <button type="submit" id="submtbtn1">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="container">
+    <script>
+        var q = [];
+        var op1arr = [];
+        var op2arr = [];
+        var op3arr = [];
+        var op4arr = [];
+        var u = 0;
+    </script>
+
+        {% for i in q %}
+            <script>
+                console.log(q);
+            q[u] = "{{i[0]}}"; 
+            op1arr[u] = "{{i[1]}}"; 
+            op2arr[u] = "{{i[2]}}"; 
+            op3arr[u] = "{{i[3]}}"; 
+            op4arr[u] = "{{i[4]}}"; 
+                u++;
+            </script>
+        {% endfor %}
+        
+
+    <div class="qcontainer">
+    <div id = "question"></div>
+    <div id="ans">
+        <div class="opbox"><input type="radio" name="ans1" ></div><div id="op1"></div>
+        <div class="opbox"><input type="radio" name="ans1"></div><div id="op2"></div>
+        <div class="opbox"><input type="radio" name="ans1"></div><div id="op3"></div>
+        <div class="opbox"><input type="radio" name="ans1"></div><div id="op4"></div>
+        <div class="opbox"><button onclick="submit_ans()" class="btnsbmt">Submit Your Answer</button></div>
+    </div>
+
+   
+</div>
+</div>
+
+<div class="hidden_form">
+        <form action="/quizboard" method="POST">
+            <input type="hidden" id="res" name= "ans">
+            <input type="hidden" id="quiz_name2" name= "quiz_name2">
+            <button type="submit" id = "end_quiz">End Quiz</button>
+        </form>
+    </div>
+</body>
+{% if error == true %}
+    <script>
+        window.location.href = "/";
+    </script>
+{% endif %}
+
+</html>
+<script>
+        var container = document.getElementById('container');
+        var ans  = document.getElementById("ans");
+        var end_quiz  = document.getElementById("end_quiz");
+        var quiz = document.getElementById("quizname");
+        var submtbtn1 = document.getElementById("submtbtn1");
+        container.style.display = "none";
+        ans.style.display = "none";
+        end_quiz.style.display = "none";
+        
+        var op1 = document.getElementById("op1");
+        var op2 = document.getElementById("op2");
+        var op3 = document.getElementById("op3");
+        var op4 = document.getElementById("op4");
+        var question = document.getElementById("question");
+        var hidden_ip = document.getElementById("res");
+        var quizname = "{{quizname}}"
+        var hidden_quizname = document.getElementById("quiz_name2");
+        if("{{bool}}" == 1)
+        {
+            container.style.display = "block";
+            ans.style.display = "block";
+            quiz.style.display = "none";
+            submtbtn1.style.display = "none";
+            end_quiz.style.display = "block";
+        }
+        var subm = document.getElementsByName('ans1');
+        var res = new Array();
+        var i = 0;
+        console.log(subm);
+       var j = 0;
+       change_question(0);
+        var y = 1;
+        function submit_ans()
+        {
+            console.log(subm);
+            checkval();
+            change_question(y);
+            y++;
+            if(y == q.length + 1)
+            {
+                container.style.display = "none";
+                ans.style.display = "none";
+                end_quiz.style.display = "block";
+            }
+            hidden_ip.value = res_encode();
+            hidden_quizname.value = quizname;
+        }
+    
+        function res_encode()
+        {
+            var res_enc = JSON.stringify(res);
+            return res_enc;
+        }
+        
+        function change_question(x)
+        {   
+            
+            question.innerHTML = q[x];
+            op1.innerHTML = op1arr[x];
+            op2.innerHTML = op2arr[x];
+            op3.innerHTML = op3arr[x];
+            op4.innerHTML = op4arr[x];
+        }
+        function checkval()
+        {   var val = 0;
+            for(var i = 0 ; i < 4 ; i++)
+             {
+                if(subm[i].checked)
+                {   
+                    val = subm[i].value;
+                    res.push(i);
+                    //j++;
+                }
+            }
+        }
+        
+</script>

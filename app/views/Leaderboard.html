@@ -1,0 +1,22 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/leaderboard.css">
+</head>
+    <body>
+        <div class="heading">LeaderBoard Of Users</div>
+        <table id = "customers">
+                <tr>
+                        <th>Username</th>
+                        <th>Score</th>
+                        <th>Quiz</th>
+                </tr>
+            {% for i in board %}
+            <tr>   
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </body>
+</html>
